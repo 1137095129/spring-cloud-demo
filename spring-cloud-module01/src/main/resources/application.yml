@@ -1,0 +1,17 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: Spring-Cloud-Moudle01
+  datasource:
+    url: jdbc:mysql://47.240.95.83:3360/springclouddemo?nullCatalogMeansCurrent=true&allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    username: myself
+    password: wang@123
+    driver-class-name: com.mysql.jdbc.Driver
+
+mybatis:
+  mapper-locations: classpath:static/mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+  type-aliases-package: org.wjf.springcloud.entity
