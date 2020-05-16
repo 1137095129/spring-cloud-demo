@@ -67,4 +67,8 @@ public class ResultTemplate<T> implements Serializable {
 	public static <T> ResultTemplate<T> getFailResult(){
 		return new ResultTemplate<>(400,"请求失败！",null,"fail");
 	}
+
+	public static <T> ResultTemplate<T> getFailResult(T t){
+		return new ResultTemplate<>(400,"请求失败！",t,"fail");
+	}
 }

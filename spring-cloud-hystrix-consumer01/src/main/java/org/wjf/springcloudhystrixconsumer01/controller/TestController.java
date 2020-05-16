@@ -27,8 +27,12 @@ public class TestController {
 	}
 
 	@GetMapping("/test/getTimeOutInfoById/{id}")
-	@HystrixCommand(commandProperties = {@HystrixProperty(name ="execution.isolation.thread.timeoutInMilliseconds" ,value ="7000" )})
+	@HystrixCommand(fallbackMethod = "getTimeOutFallBack",commandProperties = {@HystrixProperty(name ="execution.isolation.thread.timeoutInMilliseconds" ,value ="7000" )})
 	public ResultTemplate<Info> getTimeOutInfoById(@PathVariable("id") Integer id) {
 		return testService.getTimeOutInfoById(id);
+	}
+
+	public ResultTemplate<Info> getTimeOutFallBack(Integer id){
+		return ResultTemplate.getFailResult(new Info());
 	}
 }

@@ -1,0 +1,29 @@
+server:
+  port: 8890
+spring:
+  application:
+    name: spring-cloud-gateway
+  cloud:
+    gateway:
+      enabled: true
+      routes:
+        - id: spring-cloud-hystrix-consumer01
+          #负载均衡
+          uri: lb://spring-cloud-hystrix-consumer01
+          predicates:
+            - Path=/consumer/test/test/getTimeOutInfoById/**
+      discovery:
+        locator:
+          #开启动态路由，以微服务名为准
+          enabled: true
+#      discovery:
+#        locator:
+#          filters:
+eureka:
+  instance:
+    hostname: ${spring.application.name}
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://127.0.0.1:7001/eureka/,http://127.0.0.1:7002/eureka/

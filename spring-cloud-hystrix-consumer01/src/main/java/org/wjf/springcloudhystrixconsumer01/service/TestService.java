@@ -17,7 +17,6 @@ public interface TestService {
 	ResultTemplate<Info> getInfoById(@PathVariable("id") Integer id);
 
 	@GetMapping("/test/getTimeOutInfoById/{id}")
-//	@HystrixCommand(commandProperties = {@HystrixProperty(name ="execution.isolation.thread.timeoutInMilliseconds" ,value ="7000" )})
 	ResultTemplate<Info> getTimeOutInfoById(@PathVariable("id") Integer id);
 
 }
